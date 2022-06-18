@@ -1,9 +1,10 @@
-# You Don't Know JS Yet: Get Started - 2nd Edition
 # Appendix B: Practice, Practice, Practice!
 
-In this appendix, we'll explore some exercises and their suggested solutions. These are just to *get you started* with practice over the concepts from the book.
+## Appendix B: Practice, Practice, Practice!
 
-## Practicing Comparisons
+In this appendix, we'll explore some exercises and their suggested solutions. These are just to _get you started_ with practice over the concepts from the book.
+
+### Practicing Comparisons
 
 Let's practice working with value types and comparisons (Chapter 4, Pillar 3) where coercion will need to be involved.
 
@@ -26,9 +27,9 @@ scheduleMeeting("17:30",30);    // false
 scheduleMeeting("18:00",15);    // false
 ```
 
-Try to solve this yourself first. Consider the usage of equality and relational comparison operators, and how coercion impacts this code. Once you have code that works, *compare* your solution(s) to the code in "Suggested Solutions" at the end of this appendix.
+Try to solve this yourself first. Consider the usage of equality and relational comparison operators, and how coercion impacts this code. Once you have code that works, _compare_ your solution(s) to the code in "Suggested Solutions" at the end of this appendix.
 
-## Practicing Closure
+### Practicing Closure
 
 Now let's practice with closure (Chapter 4, Pillar 1).
 
@@ -55,9 +56,9 @@ start4(6);     // [4,5,6]
 
 Try to solve this yourself first.
 
-Once you have code that works, *compare* your solution(s) to the code in "Suggested Solutions" at the end of this appendix.
+Once you have code that works, _compare_ your solution(s) to the code in "Suggested Solutions" at the end of this appendix.
 
-## Practicing Prototypes
+### Practicing Prototypes
 
 Finally, let's work on `this` and objects linked via prototype (Chapter 4, Pillar 2).
 
@@ -65,7 +66,7 @@ Define a slot machine with three reels that can individually `spin()`, and then 
 
 The basic behavior of a single reel is defined in the `reel` object below. But the slot machine needs individual reels—objects that delegate to `reel`, and which each have a `position` property.
 
-A reel only *knows how* to `display()` its current slot symbol, but a slot machine typically shows three symbols per reel: the current slot (`position`), one slot above (`position - 1`), and one slot below (`position + 1`). So displaying the slot machine should end up displaying a 3 x 3 grid of slot symbols.
+A reel only _knows how_ to `display()` its current slot symbol, but a slot machine typically shows three symbols per reel: the current slot (`position`), one slot above (`position - 1`), and one slot below (`position + 1`). So displaying the slot machine should end up displaying a 3 x 3 grid of slot symbols.
 
 ```js
 function randMax(max) {
@@ -129,14 +130,12 @@ Try to solve this yourself first.
 Hints:
 
 * Use the `%` modulo operator for wrapping `position` as you access symbols circularly around a reel.
-
 * Use `Object.create(..)` to create an object and prototype-link it to another object. Once linked, delegation allows the objects to share `this` context during method invocation.
-
 * Instead of modifying the reel object directly to show each of the three positions, you can use another temporary object (`Object.create(..)` again) with its own `position`, to delegate from.
 
-Once you have code that works, *compare* your solution(s) to the code in "Suggested Solutions" at the end of this appendix.
+Once you have code that works, _compare_ your solution(s) to the code in "Suggested Solutions" at the end of this appendix.
 
-## Suggested Solutions
+### Suggested Solutions
 
 Keep in mind that these suggested solutions are just that: suggestions. There's many different ways to solve these practice exercises. Compare your approach to what you see here, and consider the pros and cons of each.
 
@@ -207,7 +206,7 @@ scheduleMeeting("17:30",30);    // false
 scheduleMeeting("18:00",15);    // false
 ```
 
-----
+***
 
 Suggested solution for "Closure" (Pillar 1) practice:
 
@@ -251,7 +250,7 @@ start3(0);     // []
 start4(6);     // [4,5,6]
 ```
 
-----
+***
 
 Suggested solution for "Prototypes" (Pillar 2) practice:
 

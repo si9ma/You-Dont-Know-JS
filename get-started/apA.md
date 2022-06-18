@@ -1,9 +1,10 @@
-# You Don't Know JS Yet: Get Started - 2nd Edition
 # Appendix A: Exploring Further
+
+## Appendix A: Exploring Further
 
 In this appendix, we're going to explore some topics from the main chapter text in a bit more detail. Think of this content as an optional preview of some of the more nuanced details covered throughout the rest of the book series.
 
-## Values vs. References
+### Values vs. References
 
 In Chapter 2, we introduced the two main types of values: primitives and objects. But we didn't discuss yet one key difference between the two: how these values are assigned and passed around.
 
@@ -61,7 +62,7 @@ Because the value assigned to `myAddress` is an object, it's held/assigned by re
 
 Again, JS chooses the value-copy vs. reference-copy behavior based on the value type. Primitives are held by value, objects are held by reference. There's no way to override this in JS, in either direction.
 
-## So Many Function Forms
+### So Many Function Forms
 
 Recall this snippet from the "Functions" section in Chapter 2:
 
@@ -72,7 +73,7 @@ var awesomeFunction = function(coolThings) {
 };
 ```
 
-The function expression here is referred to as an *anonymous function expression*, since it has no name identifier between the `function` keyword and the `(..)` parameter list. This point confuses many JS developers because as of ES6, JS performs a "name inference" on an anonymous function:
+The function expression here is referred to as an _anonymous function expression_, since it has no name identifier between the `function` keyword and the `(..)` parameter list. This point confuses many JS developers because as of ES6, JS performs a "name inference" on an anonymous function:
 
 ```js
 awesomeFunction.name;
@@ -81,7 +82,7 @@ awesomeFunction.name;
 
 The `name` property of a function will reveal either its directly given name (in the case of a declaration) or its inferred name in the case of an anonymous function expression. That value is generally used by developer tools when inspecting a function value or when reporting an error stack trace.
 
-So even an anonymous function expression *might* get a name. However, name inference only happens in limited cases such as when the function expression is assigned (with `=`). If you pass a function expression as an argument to a function call, for example, no name inference occurs; the `name` property will be an empty string, and the developer console will usually report "(anonymous function)".
+So even an anonymous function expression _might_ get a name. However, name inference only happens in limited cases such as when the function expression is assigned (with `=`). If you pass a function expression as an argument to a function call, for example, no name inference occurs; the `name` property will be an empty string, and the developer console will usually report "(anonymous function)".
 
 Even if a name is inferred, **it's still an anonymous function.** Why? Because the inferred name is a metadata string value, not an available identifier to refer to the function. An anonymous function doesn't have an identifier to use to refer to itself from inside itself—for recursion, event unbinding, etc.
 
@@ -99,15 +100,15 @@ awesomeFunction.name;
 // "someName"
 ```
 
-This function expression is a *named function expression*, since the identifier `someName` is directly associated with the function expression at compile time; the association with the identifier `awesomeFunction` still doesn't happen until runtime at the time of that statement. Those two identifiers don't have to match; sometimes it makes sense to have them be different, other times it's better to have them be the same.
+This function expression is a _named function expression_, since the identifier `someName` is directly associated with the function expression at compile time; the association with the identifier `awesomeFunction` still doesn't happen until runtime at the time of that statement. Those two identifiers don't have to match; sometimes it makes sense to have them be different, other times it's better to have them be the same.
 
-Notice also that the explicit function name, the identifier `someName`, takes precedence when assigning a *name* for the `name` property.
+Notice also that the explicit function name, the identifier `someName`, takes precedence when assigning a _name_ for the `name` property.
 
 Should function expressions be named or anonymous? Opinions vary widely on this. Most developers tend to be unconcerned with using anonymous functions. They're shorter, and unquestionably more common in the broad sphere of JS code out there.
 
 In my opinion, if a function exists in your program, it has a purpose; otherwise, take it out! And if it has a purpose, it has a natural name that describes that purpose.
 
-If a function has a name, you the code author should include that name in the code, so that the reader does not have to infer that name from reading and mentally executing that function's source code. Even a trivial function body like `x * 2` has to be read to infer a name like "double" or "multBy2"; that brief extra mental work is unnecessary when you could just take a second to name the function "double" or "multBy2" *once*, saving the reader that repeated mental work every time it's read in the future.
+If a function has a name, you the code author should include that name in the code, so that the reader does not have to infer that name from reading and mentally executing that function's source code. Even a trivial function body like `x * 2` has to be read to infer a name like "double" or "multBy2"; that brief extra mental work is unnecessary when you could just take a second to name the function "double" or "multBy2" _once_, saving the reader that repeated mental work every time it's read in the future.
 
 There are, regrettably in some respects, many other function definition forms in JS as of early 2020 (maybe more in the future!).
 
@@ -181,7 +182,7 @@ Phew! That's a lot of different ways to define functions.
 
 There's no simple shortcut path here; you just have to build familiarity with all the function forms so you can recognize them in existing code and use them appropriately in the code you write. Study them closely and practice!
 
-## Coercive Conditional Comparison
+### Coercive Conditional Comparison
 
 Yes, that section name is quite a mouthful. But what are we talking about? We're talking about conditional expressions needing to perform coercion-oriented comparisons to make their decisions.
 
@@ -251,14 +252,14 @@ Since the `Boolean(..)` function always returns a value of type boolean, the `==
 
 You just can't get away from coercions in JS comparisons. Buckle down and learn them.
 
-## Prototypal "Classes"
+### Prototypal "Classes"
 
 In Chapter 3, we introduced prototypes and showed how we can link objects through a prototype chain.
 
 Another way of wiring up such prototype linkages served as the (honestly, ugly) predecessor to the elegance of the ES6 `class` system (see Chapter 2, "Classes"), and is referred to as prototypal classes.
 
-| TIP: |
-| :--- |
+| TIP:                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------ |
 | While this style of code is quite uncommon in JS these days, it's still perplexingly rather common to be asked about it in job interviews! |
 
 Let's first recall the `Object.create(..)` style of coding:
@@ -295,7 +296,7 @@ mathClass.welcome();
 // Welcome, students!
 ```
 
-All functions by default reference an empty object at a property named `prototype`. Despite the confusing naming, this is **not** the function's *prototype* (where the function is prototype linked to), but rather the prototype object to *link to* when other objects are created by calling the function with `new`.
+All functions by default reference an empty object at a property named `prototype`. Despite the confusing naming, this is **not** the function's _prototype_ (where the function is prototype linked to), but rather the prototype object to _link to_ when other objects are created by calling the function with `new`.
 
 We add a `welcome` property on that empty object (called `Classroom.prototype`), pointing at the `hello()` function.
 

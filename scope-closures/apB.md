@@ -1,5 +1,8 @@
-# You Don't Know JS Yet: Scope & Closures - 2nd Edition
-# Appendix B: Practice
+# apB
+
+## You Don't Know JS Yet: Scope & Closures - 2nd Edition
+
+## Appendix B: Practice
 
 This appendix aims to give you some challenging and interesting exercises to test and solidify your understanding of the main topics from this book. It's a good idea to try out the exercises yourself—in an actual code editor!—instead of skipping straight to the solutions at the end. No cheating!
 
@@ -7,37 +10,31 @@ These exercises don't have a specific right answer that you have to get exactly.
 
 There's no judging you on how you write your code. My hope is that you come away from this book feeling confident that you can tackle these sorts of coding tasks built on a strong foundation of knowledge. That's the only objective, here. If you're happy with your code, I am, too!
 
-## Buckets of Marbles
+### Buckets of Marbles
 
 Remember Figure 2 from back in Chapter 2?
 
-<figure>
-    <img src="images/fig2.png" width="300" alt="Colored Scope Bubbles" align="center">
-    <figcaption><em>Fig. 2 (Ch. 2): Colored Scope Bubbles</em></figcaption>
-    <br><br>
-</figure>
+![Colored Scope Bubbles](images/fig2.png)_Fig. 2 (Ch. 2): Colored Scope Bubbles_\
+\
+
 
 This exercise asks you to write a program—any program!—that contains nested functions and block scopes, which satisfies these constraints:
 
-* If you color all the scopes (including the global scope!) different colors, you need at least six colors. Make sure to add a code comment labeling each scope with its color.
+*   If you color all the scopes (including the global scope!) different colors, you need at least six colors. Make sure to add a code comment labeling each scope with its color.
 
     BONUS: identify any implied scopes your code may have.
-
 * Each scope has at least one identifier.
-
 * Contains at least two function scopes and at least two block scopes.
-
 * At least one variable from an outer scope must be shadowed by a nested scope variable (see Chapter 3).
-
 * At least one variable reference must resolve to a variable declaration at least two levels higher in the scope chain.
 
-| TIP: |
-| :--- |
-| You *can* just write junk foo/bar/baz-type code for this exercise, but I suggest you try to come up with some sort of non-trivial real'ish code that at least does something kind of reasonable. |
+| TIP:                                                                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| You _can_ just write junk foo/bar/baz-type code for this exercise, but I suggest you try to come up with some sort of non-trivial real'ish code that at least does something kind of reasonable. |
 
 Try the exercise for yourself, then check out the suggested solution at the end of this appendix.
 
-## Closure (PART 1)
+### Closure (PART 1)
 
 Let's first practice closure with some common computer-math operations: determining if a value is prime (has no divisors other than 1 and itself), and generating a list of prime factors (divisors) for a given number.
 
@@ -51,7 +48,7 @@ factorize(11);      // [ 11 ]
 factorize(12);      // [ 3, 2, 2 ] --> 3*2*2=12
 ```
 
-Here's an implementation of `isPrime(..)`, adapted from the Math.js library: [^MathJSisPrime]
+Here's an implementation of `isPrime(..)`, adapted from the Math.js library: \[^MathJSisPrime]
 
 ```js
 function isPrime(v) {
@@ -89,8 +86,8 @@ function factorize(v) {
 }
 ```
 
-| NOTE: |
-| :--- |
+| NOTE:                                                                                                                                                                                                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | I call this basic because it's not optimized for performance. It's binary-recursive (which isn't tail-call optimizable), and it creates a lot of intermediate array copies. It also doesn't order the discovered factors in any way. There are many, many other algorithms for this task, but I wanted to use something short and roughly understandable for our exercise. |
 
 If you were to call `isPrime(4327)` multiple times in a program, you can see that it would go through all its dozens of comparison/computation steps every time. If you consider `factorize(..)`, it's calling `isPrime(..)` many times as it computes the list of factors. And there's a good chance most of those calls are repeats. That's a lot of wasted work!
@@ -103,7 +100,7 @@ Use separate closures for caching of `isPrime(..)` and `factorize(..)`, rather t
 
 Try the exercise for yourself, then check out the suggested solution at the end of this appendix.
 
-### A Word About Memory
+#### A Word About Memory
 
 I want to share a little quick note about this closure cache technique and the impacts it has on your application's performance.
 
@@ -111,13 +108,13 @@ We can see that in saving the repeated calls, we improve computation speed (in s
 
 The trade-off is memory. We're essentially growing our cache (in memory) unboundedly. If the functions in question were called many millions of times with mostly unique inputs, we'd be chewing up a lot of memory. This can definitely be worth the expense, but only if we think it's likely we see repetition of common inputs so that we're taking advantage of the cache.
 
-If most every call will have a unique input, and the cache is essentially never *used* to any benefit, this is an inappropriate technique to employ.
+If most every call will have a unique input, and the cache is essentially never _used_ to any benefit, this is an inappropriate technique to employ.
 
 It also might be a good idea to have a more sophisticated caching approach, such as an LRU (least recently used) cache, that limits its size; as it runs up to the limit, an LRU evicts the values that are... well, least recently used!
 
 The downside here is that LRU is quite non-trivial in its own right. You'll want to use a highly optimized implementation of LRU, and be keenly aware of all the trade-offs at play.
 
-## Closure (PART 2)
+### Closure (PART 2)
 
 In this exercise, we're going to again practive closure by defining a `toggle(..)` utility that gives us a value toggler.
 
@@ -149,7 +146,7 @@ The corner case of passing in no values to `toggle(..)` is not very important; s
 
 Try the exercise for yourself, then check out the suggested solution at the end of this appendix.
 
-## Closure (PART 3)
+### Closure (PART 3)
 
 In this third and final exercise on closure, we're going to implement a basic calculator. The `calculator()` function will produce an instance of a calculator that maintains its own state, in the form of a function (`calc(..)`, below):
 
@@ -265,11 +262,11 @@ function formatTotal(display) {
 
 Don't worry too much about how `formatTotal(..)` works. Most of its logic is a bunch of handling to limit the calculator display to 11 characters max, even if negatives, repeating decimals, or even "e+" exponential notation is required.
 
-Again, don't get too mired in the mud around calculator-specific behavior. Focus on the *memory* of closure.
+Again, don't get too mired in the mud around calculator-specific behavior. Focus on the _memory_ of closure.
 
 Try the exercise for yourself, then check out the suggested solution at the end of this appendix.
 
-## Modules
+### Modules
 
 This exercise is to convert the calculator from Closure (PART 3) into a module.
 
@@ -347,7 +344,7 @@ BONUS: write out a few sentences explaining your thoughts.
 
 BONUS #2: try converting your module to other module formats, including: UMD, CommonJS, and ESM (ES Modules).
 
-## Suggested Solutions
+### Suggested Solutions
 
 Hopefully you've tried out the exercises before you're reading this far. No cheating!
 
@@ -355,9 +352,9 @@ Remember, each suggested solution is just one of a bunch of different ways to ap
 
 The most important benefit you can get from reading these suggested solutions is to compare them to your code and analyze why we each made similar or different choices. Don't get into too much bikeshedding; try to stay focused on the main topic rather than the small details.
 
-### Suggested: Buckets of Marbles
+#### Suggested: Buckets of Marbles
 
-The *Buckets of Marbles Exercise* can be solved like this:
+The _Buckets of Marbles Exercise_ can be solved like this:
 
 ```js
 // RED(1)
@@ -403,9 +400,9 @@ findPrimes(howMany);
 // ]
 ```
 
-### Suggested: Closure (PART 1)
+#### Suggested: Closure (PART 1)
 
-The *Closure Exercise (PART 1)* for `isPrime(..)` and `factorize(..)`, can be solved like this:
+The _Closure Exercise (PART 1)_ for `isPrime(..)` and `factorize(..)`, can be solved like this:
 
 ```js
 var isPrime = (function isPrime(v){
@@ -456,16 +453,14 @@ var factorize = (function factorize(v){
 The general steps I used for each utility:
 
 1. Wrap an IIFE to define the scope for the cache variable to reside.
-
 2. In the underlying call, first check the cache, and if a result is already known, return.
-
 3. At each place where a `return` was happening originally, assign to the cache and just return the results of that assignment operation—this is a space savings trick mostly just for brevity in the book.
 
 I also renamed the inner function from `factorize(..)` to `findFactors(..)`. That's not technically necessary, but it helps it make clearer which function the recursive calls invoke.
 
-### Suggested: Closure (PART 2)
+#### Suggested: Closure (PART 2)
 
-The *Closure Exercise (PART 2)* `toggle(..)` can be solved like this:
+The _Closure Exercise (PART 2)_ `toggle(..)` can be solved like this:
 
 ```js
 function toggle(...vals) {
@@ -500,9 +495,9 @@ speed();      // "fast"
 speed();      // "slow"
 ```
 
-### Suggested: Closure (PART 3)
+#### Suggested: Closure (PART 3)
 
-The *Closure Exercise (PART 3)* `calculator()` can be solved like this:
+The _Closure Exercise (PART 3)_ `calculator()` can be solved like this:
 
 ```js
 // from earlier:
@@ -583,13 +578,13 @@ useCalc(calc,"+3=");            // +3=ERR
 useCalc(calc,"51=");            // 51
 ```
 
-| NOTE: |
-| :--- |
-| Remember: this exercise is about closure. Don't focus too much on the actual mechanics of a calculator, but rather on whether you are properly *remembering* the calculator state across function calls. |
+| NOTE:                                                                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Remember: this exercise is about closure. Don't focus too much on the actual mechanics of a calculator, but rather on whether you are properly _remembering_ the calculator state across function calls. |
 
-### Suggested: Modules
+#### Suggested: Modules
 
-The *Modules Exercise* `calculator()` can be solved like this:
+The _Modules Exercise_ `calculator()` can be solved like this:
 
 ```js
 // from earlier:
@@ -679,6 +674,6 @@ useCalc(calc,"+3=");            // +3=ERR
 useCalc(calc,"51=");            // 51
 ```
 
-That's it for this book, congratulations on your achievement! When you're ready, move on to Book 3, *Objects & Classes*.
+That's it for this book, congratulations on your achievement! When you're ready, move on to Book 3, _Objects & Classes_.
 
-[^MathJSisPrime]: *Math.js: isPrime(..)*, https://github.com/josdejong/mathjs/blob/develop/src/function/utils/isPrime.js, 3 March 2020.
+\[^MathJSisPrime]: _Math.js: isPrime(..)_, https://github.com/josdejong/mathjs/blob/develop/src/function/utils/isPrime.js, 3 March 2020.

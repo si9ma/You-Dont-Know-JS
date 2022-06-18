@@ -1,17 +1,17 @@
 # You Don't Know JS Yet: Scope & Closures - 2nd Edition
 
-<img src="images/cover.png" width="300">
+![](images/cover.png)
 
------
+***
 
-**[Purchase ebook/PDF from Leanpub](https://leanpub.com/ydkjsy-scope-closures)**
+[**Purchase ebook/PDF from Leanpub**](https://leanpub.com/ydkjsy-scope-closures)
 
------
+***
 
 [Table of Contents](toc.md)
 
 * [Foreword](foreword.md) (by [Sarah Drasner](https://sarah.dev/))
-* [Preface](../preface.md)
+* [Preface](broken-reference)
 * [Chapter 1: What's the Scope?](ch1.md)
 * [Chapter 2: Illustrating Lexical Scope](ch2.md)
 * [Chapter 3: The Scope Chain](ch3.md)
